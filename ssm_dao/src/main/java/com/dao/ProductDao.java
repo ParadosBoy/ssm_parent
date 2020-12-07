@@ -1,6 +1,7 @@
 package com.dao;
 
 import com.domain.Product;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -9,6 +10,7 @@ import java.util.List;
  */
 public interface ProductDao {
      List<Product> findAll();
+     static void save(Product product) {
 
-     void save(Product product);
+     };
 }

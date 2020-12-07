@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 /**
  * @author 10574
  */
@@ -19,8 +20,9 @@ public class productServiceImpl implements productService {
     public List<Product> findAll() {
         return productDao.findAll();
     }
-    public void save(Product product){
-        productDao.save(product);
+
+    public void save(Product product) {
+        com.dao.ProductDao.save(product);
     }
 
 }
