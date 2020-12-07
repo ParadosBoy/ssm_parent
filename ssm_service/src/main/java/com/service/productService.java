@@ -9,8 +9,14 @@ import java.util.List;
  */
 public interface productService {
 
-    static void save(Product product) {
-    }
+
 
     List<Product> findAll();
+
+    Product findById(Integer id);
+
+    void update(Product product);
+
+
+    void save(Product product);
 }

@@ -10,7 +10,9 @@ import java.util.List;
  */
 public interface ProductDao {
      List<Product> findAll();
-     static void save(Product product) {
+     void save(Product product);
 
-     };
+     Product findById(Integer id);
+
+     void update(Product product);
 }

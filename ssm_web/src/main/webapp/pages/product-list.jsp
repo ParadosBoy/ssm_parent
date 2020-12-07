@@ -180,7 +180,7 @@
                                                     onclick='location.href="all-order-manage-edit.html"'>订单
                                             </button>
                                             <button type="button" class="btn bg-olive btn-xs"
-                                                    onclick='location.href="all-order-manage-edit.html"'>查看
+                                                    onclick='location.href="${pageContext.request.contextPath}/product/updateUI?id=${product.id}"'>修改
                                             </button>
                                         </td>
                                     </tr>

@@ -3,6 +3,7 @@ package com.controller;
 import com.domain.Product;
 import com.service.productService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,7 +31,20 @@ public class ProductController {
 
     @RequestMapping("/save")
     public String save(Product product) {
-        com.service.productService.save(product);
+        productService.save(product);
+        return "redirect:/product/findAll";
+    }
+    @RequestMapping("/updateUI")
+    public ModelAndView updateUI(Integer id){
+        ModelAndView modelAndView = new ModelAndView();
+        Product product= productService.findById(id);
+        modelAndView.addObject("product",product);
+        modelAndView.setViewName("product-update");
+        return modelAndView;
+    }
+    @RequestMapping("/update")
+    public String uodate(Product product){
+        productService.update(product);
         return "redirect:/product/findAll";
     }
 }

@@ -121,7 +121,7 @@
 								</div>
 								<input type="text" class="form-control pull-right"
 									id="datepicker-a3" name="departureTime"
-									value="${product.departureTimeStr}">
+									value="${product.departureTime}">
 							</div>
 						</div>
 
@@ -141,8 +141,8 @@
 						<div class="col-md-2 title">产品状态</div>
 						<div class="col-md-4 data">
 							<select class="form-control select2" style="width: 100%"
-								name="productStatus">
-								<option value="0" selected="selected">关闭</option>
+								id="productStatus"name="productStatus">
+								<option value="0">关闭</option>
 								<option value="1">开启</option>
 							</select>
 						</div>
@@ -182,6 +182,9 @@
 
 	<script
 		src="${pageContext.request.contextPath}/plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script type="text/javascript">
+		$("#productStatus option[value=${product.productStatus}]").prop("selected","selected");
+	</script>
 	<script
 		src="${pageContext.request.contextPath}/plugins/jQueryUI/jquery-ui.min.js"></script>
 	<script>
