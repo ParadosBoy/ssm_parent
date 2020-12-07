@@ -17,14 +17,20 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
     @Autowired
-     private productService productService;
+    private productService productService;
 
     @RequestMapping("/findAll")
-   public ModelAndView findAll() {
+    public ModelAndView findAll() {
         ModelAndView modelAndView = new ModelAndView();
         List<Product> productList = productService.findAll();
         modelAndView.setViewName("product-list");
-        modelAndView.addObject("productList",productList);
-       return modelAndView;
+        modelAndView.addObject("productList", productList);
+        return modelAndView;
+    }
+
+    @RequestMapping("/save")
+    public String save(Product product) {
+        com.service.productService.save(product);
+        return "redirect:/product/findAll";
     }
 }
