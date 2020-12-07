@@ -163,10 +163,10 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <c:forEach var="product" items="${productList}">
+                                <c:forEach var="product" items="${productList}" varStatus="i">
                                     <tr>
                                         <td><input name="ids" type="checkbox"></td>
-                                        <td>${product.id}</td>
+                                        <td>${i.count}</td>
 
                                         <td>${product.productNum}</td>
                                         <td>${product.productName}</td>
@@ -176,6 +176,9 @@
                                         <td>${product.productStatus == 1 ? "开启":"关闭"}</td>
 
                                         <td class="text-center">
+                                            <button type="button" class="btn bg-olive btn-xs"
+                                                    onclick='delOne(${product.id})'>删除
+                                            </button>
                                             <button type="button" class="btn bg-olive btn-xs"
                                                     onclick='location.href="all-order-manage-edit.html"'>订单
                                             </button>
@@ -287,6 +290,13 @@
 
 <script
         src="${pageContext.request.contextPath}/plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+    function delOne(id){
+        if (confirm('确认删除吗?')){
+            location.href="${pageContext.request.contextPath}/product/delOne?id="+id;
+        }
+    }
+</script>
 <script
         src="${pageContext.request.contextPath}/plugins/jQueryUI/jquery-ui.min.js"></script>
 <script>

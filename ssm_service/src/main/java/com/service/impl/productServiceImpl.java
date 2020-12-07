@@ -36,5 +36,10 @@ public class productServiceImpl implements productService {
         productDao.save(product);
     }
 
+    @Override
+    public void delOne(Integer id) {
+        productDao.delOne(id);
+    }
+
 
 }

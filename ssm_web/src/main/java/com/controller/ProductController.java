@@ -47,4 +47,9 @@ public class ProductController {
         productService.update(product);
         return "redirect:/product/findAll";
     }
+    @RequestMapping("/delOne")
+    public String delOne(Integer id){
+        productService.delOne(id);
+        return "redirect:/product/findAll";
+    }
 }

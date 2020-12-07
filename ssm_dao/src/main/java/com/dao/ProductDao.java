@@ -15,4 +15,6 @@ public interface ProductDao {
      Product findById(Integer id);
 
      void update(Product product);
+
+     void delOne(Integer id);
 }

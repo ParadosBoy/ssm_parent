@@ -29,6 +29,12 @@
             productPrice=#{productPrice},
             productDesc=#{productDesc},
             productStatus=#{productStatus}
-            where id = #{id}
+        where id = #{id}
     </update>
+
+    <delete id="delOne" parameterType="int">
+        delete
+        from product
+        where id = #{id}
+    </delete>
 </mapper>
