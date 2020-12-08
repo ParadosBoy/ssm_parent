@@ -38,8 +38,16 @@ public class productServiceImpl implements productService {
 
     @Override
     public void delOne(Integer id) {
-        productDao.delOne(id);
+        productDao.delete(id);
     }
 
+    @Override
+    public void delMany(Integer[] ids) {
+        if (ids != null) {
+            for (Integer id : ids) {
+                productDao.delete(id);
+            }
+        }
+    }
 
 }

@@ -115,7 +115,7 @@
                                         <i class="fa fa-file-o"></i> 新建
                                     </button>
                                     <button type="button" class="btn btn-default" title="删除"
-                                            onclick='confirm("你确认要删除吗？")'>
+                                            onclick='delMany()'>
                                         <i class="fa fa-trash-o"></i> 删除
                                     </button>
                                     <button type="button" class="btn btn-default" title="开启"
@@ -141,31 +141,31 @@
                             </div>
                         </div>
                         <!--工具栏/-->
+                        <form id="delForm" action="${pageContext.request.contextPath}/product/delMany" method="post">
+                            <!--数据列表-->
+                            <table id="dataList"
+                                   class="table table-bordered table-striped table-hover dataTable">
+                                <thead>
+                                <tr>
+                                    <th class="" style="padding-right: 0px;"><input
+                                            id="selall" type="checkbox" class="icheckbox_square-blue">
+                                    </th>
+                                    <th class="sorting_asc">ID</th>
 
-                        <!--数据列表-->
-                        <table id="dataList"
-                               class="table table-bordered table-striped table-hover dataTable">
-                            <thead>
-                            <tr>
-                                <th class="" style="padding-right: 0px;"><input
-                                        id="selall" type="checkbox" class="icheckbox_square-blue">
-                                </th>
-                                <th class="sorting_asc">ID</th>
+                                    <th class="sorting">产品编号</th>
+                                    <th class="sorting">产品名称</th>
+                                    <th class="sorting">出发城市</th>
+                                    <th class="sorting">出发日期</th>
+                                    <th class="sorting">产品价格</th>
+                                    <th class="sorting">产品状态</th>
 
-                                <th class="sorting">产品编号</th>
-                                <th class="sorting">产品名称</th>
-                                <th class="sorting">出发城市</th>
-                                <th class="sorting">出发日期</th>
-                                <th class="sorting">产品价格</th>
-                                <th class="sorting">产品状态</th>
-
-                                <th class="text-center">操作</th>
-                            </tr>
-                            </thead>
-                            <tbody>
+                                    <th class="text-center">操作</th>
+                                </tr>
+                                </thead>
+                                <tbody>
                                 <c:forEach var="product" items="${productList}" varStatus="i">
                                     <tr>
-                                        <td><input name="ids" type="checkbox"></td>
+                                        <td><input name="ids" type="checkbox" value="${product.id}"></td>
                                         <td>${i.count}</td>
 
                                         <td>${product.productNum}</td>
@@ -183,16 +183,17 @@
                                                     onclick='location.href="all-order-manage-edit.html"'>订单
                                             </button>
                                             <button type="button" class="btn bg-olive btn-xs"
-                                                    onclick='location.href="${pageContext.request.contextPath}/product/updateUI?id=${product.id}"'>修改
+                                                    onclick='location.href="${pageContext.request.contextPath}/product/updateUI?id=${product.id}"'>
+                                                修改
                                             </button>
                                         </td>
                                     </tr>
                                 </c:forEach>
-                            </tbody>
+                                </tbody>
 
-                        </table>
-                        <!--数据列表/-->
-
+                            </table>
+                            <!--数据列表/-->
+                        </form>
                         <!--工具栏-->
                         <div class="pull-left">
                             <div class="form-group form-inline">
@@ -291,9 +292,14 @@
 <script
         src="${pageContext.request.contextPath}/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <script type="text/javascript">
-    function delOne(id){
-        if (confirm('确认删除吗?')){
-            location.href="${pageContext.request.contextPath}/product/delOne?id="+id;
+    function delOne(id) {
+        if (confirm('确认删除吗?')) {
+            location.href = "${pageContext.request.contextPath}/product/delOne?id=" + id;
+        }
+    }
+    function delMany() {
+        if (confirm('确认删除吗?')) {
+            $("#delForm").submit();
         }
     }
 </script>

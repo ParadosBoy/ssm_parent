@@ -21,4 +21,6 @@ public interface productService {
     void save(Product product);
 
     void delOne(Integer id);
+
+    void delMany(Integer[] ids);
 }

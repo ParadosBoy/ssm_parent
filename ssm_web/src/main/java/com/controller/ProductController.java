@@ -52,4 +52,9 @@ public class ProductController {
         productService.delOne(id);
         return "redirect:/product/findAll";
     }
+    @RequestMapping("/delMany")
+    public String delMany(Integer[] ids){
+        productService.delMany(ids);
+        return "redirect:/product/findAll";
+    }
 }

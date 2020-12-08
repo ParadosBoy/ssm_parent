@@ -32,9 +32,11 @@
         where id = #{id}
     </update>
 
-    <delete id="delOne" parameterType="int">
+    <delete id="delete" parameterType="int">
         delete
         from product
         where id = #{id}
     </delete>
+
+
 </mapper>
