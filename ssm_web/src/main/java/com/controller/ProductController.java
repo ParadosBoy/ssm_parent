@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("/product")
 public class ProductController {
     @Autowired
-    private productService productService;
+    productService productService;
 
     @RequestMapping("/findAll")
     public ModelAndView findAll() {
@@ -34,26 +34,30 @@ public class ProductController {
         productService.save(product);
         return "redirect:/product/findAll";
     }
+
     @RequestMapping("/updateUI")
-    public ModelAndView updateUI(Integer id){
+    public ModelAndView updateUI(Integer id) {
         ModelAndView modelAndView = new ModelAndView();
-        Product product= productService.findById(id);
-        modelAndView.addObject("product",product);
+        Product product = productService.findById(id);
+        modelAndView.addObject("product", product);
         modelAndView.setViewName("product-update");
         return modelAndView;
     }
+
     @RequestMapping("/update")
-    public String uodate(Product product){
+    public String uodate(Product product) {
         productService.update(product);
         return "redirect:/product/findAll";
     }
+
     @RequestMapping("/delOne")
-    public String delOne(Integer id){
+    public String delOne(Integer id) {
         productService.delOne(id);
         return "redirect:/product/findAll";
     }
+
     @RequestMapping("/delMany")
-    public String delMany(Integer[] ids){
+    public String delMany(Integer[] ids) {
         productService.delMany(ids);
         return "redirect:/product/findAll";
     }
