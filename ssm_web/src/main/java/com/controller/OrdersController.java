@@ -23,8 +23,8 @@ public class OrdersController {
     public ModelAndView findAll() {
         ModelAndView modelAndView = new ModelAndView();
         List<Orders> ordersList = ordersService.findAll();
-        modelAndView.setViewName("order-List");
         modelAndView.addObject("ordersList", ordersList);
+        modelAndView.setViewName("order-list");
         return modelAndView;
     }
 }

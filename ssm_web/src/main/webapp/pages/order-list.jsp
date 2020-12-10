@@ -170,6 +170,7 @@
                                     <td>${order.peopleCount}</td>
                                     <td>${order.payType==0?"微信":order.payType==1?"支付宝":"其他"}</td>
                                     <td>${order.orderStatus==1?"已支付":"未支付"}</td>
+                                    <td></td>
 
 
                                     <td class="text-center">
