@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author 10574
  */
-public interface productService {
+public interface ProductService {
 
 
 

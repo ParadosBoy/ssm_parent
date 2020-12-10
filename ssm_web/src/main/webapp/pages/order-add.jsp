@@ -150,7 +150,7 @@
 							<select class="form-control select2" style="width: 100%"
 								name="product.id">
 								
-								<c:forEach items="${ plist }" var="p">
+								<c:forEach items="${ productList }" var="p">
 									<option value="${ p.id }" >${ p.productName }</option>
 								</c:forEach>
 								
