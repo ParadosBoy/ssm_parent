@@ -3,8 +3,18 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.OrdersDao">
-    <resultMap id="orderMap" type=""
-    <select id="findAll" resultType="orderMap">
+    <resultMap id="orderMap" type="orders">
+        <id column="id" property="id"/>
+        <result column="orderNum" property="orderNum"/>
+        <result column="orderTime" property="orderTime"/>
+        <result column="peopleCount" property="peopleCount"/>
+        <result column="payType" property="payType"/>
+        <result column="orderStatus" property="orderStatus"/>
+        <result column="orderDesc" property="orderDesc"/>
+
+        <association property="product" column="productId" javaType="product" select="com.dao.ProductDao.findById"/>
+    </resultMap>
+    <select id="findAll" resultMap="orderMap">
         select *
         from orders
     </select>
