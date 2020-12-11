@@ -38,5 +38,14 @@
         where id = #{id}
     </delete>
 
+    <select id="findTotalCount" resultType="int">
+        select count(1)
+        from product
+    </select>
+
+    <select id="findByPage" resultType="product">
+        select *
+        from product limite #{param1},#{param2}
+    </select>
 
 </mapper>

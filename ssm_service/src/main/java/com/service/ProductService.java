@@ -1,5 +1,6 @@
 package com.service;
 
+import com.controller.PageBean;
 import com.domain.Product;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import java.util.List;
  * @author 10574
  */
 public interface ProductService {
+
 
 
 
@@ -23,4 +25,7 @@ public interface ProductService {
     void delOne(Integer id);
 
     void delMany(Integer[] ids);
+
+
+    PageBean<Product> findByPage(Integer currPage, Integer pageSize);
 }

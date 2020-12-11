@@ -18,4 +18,9 @@ public interface ProductDao {
     void update(Product product);
 
     void delete(Integer id);
+
+    Integer findTotalCount();
+
+
+    List<Product> findByPage(Integer startIndex, Integer pageSize);
 }

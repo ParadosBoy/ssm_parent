@@ -5,6 +5,7 @@ import com.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -19,11 +20,13 @@ public class ProductController {
     ProductService productService;
 
     @RequestMapping("/findAll")
-    public ModelAndView findAll() {
+    public ModelAndView findAll(
+            @RequestParam(value = "currPage", required = false, defaultValue = "1") Integer currPage,
+            @RequestParam(value = "pageSize", required = false, defaultValue = "5") Integer pageSize) {
         ModelAndView modelAndView = new ModelAndView();
-        List<Product> productList = productService.findAll();
+        PageBean<Product> pageBean = productService.findByPage(currPage,pageSize);
         modelAndView.setViewName("product-list");
-        modelAndView.addObject("productList", productList);
+        modelAndView.addObject("pageBean", pageBean);
         return modelAndView;
     }
 
@@ -58,5 +61,14 @@ public class ProductController {
     public String delMany(Integer[] ids) {
         productService.delMany(ids);
         return "redirect:/product/findAll";
+    }
+
+    @RequestMapping("/findAll2")
+    public ModelAndView findAll2() {
+        ModelAndView modelAndView = new ModelAndView();
+        List<Product> productList = productService.findAll();
+        modelAndView.setViewName("product-list");
+        modelAndView.addObject("productList", productList);
+        return modelAndView;
     }
 }
