@@ -10,4 +10,6 @@ import java.util.List;
 public interface OrdersService {
 
     List<Orders> findAll();
+
+    void save(Orders orders);
 }

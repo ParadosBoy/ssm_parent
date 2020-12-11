@@ -11,4 +11,6 @@ public interface OrdersDao {
 
 
     List<Orders> findAll();
+
+    void save(Orders orders);
 }

@@ -21,4 +21,9 @@ public class OrdersServiceImpl implements OrdersService {
     public List<Orders> findAll() {
         return ordersDao.findAll();
     }
+
+    @Override
+    public void save(Orders orders) {
+        ordersDao.save(orders);
+    }
 }

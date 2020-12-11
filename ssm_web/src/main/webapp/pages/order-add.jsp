@@ -98,7 +98,7 @@
 
 			<!-- 正文区域 -->
 			<section class="content"> <!--订单信息-->
-			<form action="${pageContext.request.contextPath}/order/save" method="post">
+			<form action="${pageContext.request.contextPath}/orders/save" method="post">
 				
 				<div class="panel panel-default">
 					<div class="panel-heading">订单信息</div>

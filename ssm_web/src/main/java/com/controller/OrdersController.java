@@ -31,6 +31,7 @@ public class OrdersController {
 
     @Autowired
     ProductService productService;
+
     @RequestMapping("/saveUI")
     public ModelAndView saveUI() {
         ModelAndView modelAndView = new ModelAndView();
@@ -38,5 +39,11 @@ public class OrdersController {
         modelAndView.addObject("productList", productList);
         modelAndView.setViewName("order-add");
         return modelAndView;
+    }
+
+    @RequestMapping("/save")
+    public String save(Orders orders) {
+        ordersService.save(orders);
+        return "redirect:/orders/findAll";
     }
 }

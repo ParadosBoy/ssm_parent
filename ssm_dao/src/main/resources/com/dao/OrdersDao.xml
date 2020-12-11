@@ -3,6 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.OrdersDao">
+    <insert id="save" parameterType="orders">
+        insert into orders (id, orderNum, orderTime, peopleCount, orderDesc, payType, orderStatus, productId)
+        values (null, #{orderNum}, #{orderTime}, #{peopleCount}, #{orderDesc}, #{payType}, #{orderStatus},
+                #{product.id})
+    </insert>
+
     <resultMap id="orderMap" type="orders">
         <id column="id" property="id"/>
         <result column="orderNum" property="orderNum"/>
