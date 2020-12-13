@@ -236,60 +236,30 @@
 
                 </div>
                 <!-- /.box-body -->
-
-                <!-- .box-footer-->
-                <div class="box-footer">
-                    <div class="pull-left">
-                        <div class="form-group form-inline">
-                            总共${pageInfo.pages} 页，共${pageInfo.total} 条数据。 每页 <select onchange="gotoPage(1)"
-                                                                                     id="pageSize" class="form-control">
-                            <option value="2">2</option>
-                            <option value="5">5</option>
-                            <option value="10">10</option>
-                            <option value="20">20</option>
-                        </select> 条
-                        </div>
-                    </div>
-
-                    <div class="box-tools pull-right">
-                        <ul class="pagination">
-                            <li><a href="javascript:gotoPage(1)" aria-label="Previous">首页</a></li>
-                            <li><a href="javascript:gotoPage(${pageInfo.prePage})">上一页</a>
-                            </li>
-                            <c:forEach var="i" begin="${pageInfo.navigateFirstPage}" end="${pageInfo.navigateLastPage}">
-                                <c:if test="${pageInfo.pageNum ==1}">
-                                    <li><a href="javascript:gotoPage(${i})"><b>${i}</b></a></li>
-                                </c:if>
-                                <c:if test="${pageInfo.pageNum !=1}">
-                                    <li><a href="javascript:gotoPage(${i})">${i}</a></li>
-                                </c:if>
-                            </c:forEach>
-                            <li><a href="javascript:gotoPage(${pageInfo.nextPage})">下一页</a></li>
-                            <li><a href="javascript:gotoPage(${pageInfo.pages})" aria-label="Next">尾页</a></li>
-                        </ul>
-                    </div>
-
-                </div>
-                <!-- /.box-footer-->
+                <%String str = "product";%>
+                <%@include file="page.jsp" %>
 
             </div>
 
-        </section>
-        <!-- 正文区域 /-->
 
     </div>
-    <!-- 内容区域 /-->
 
-    <!-- 底部导航 -->
-    <footer class="main-footer">
-        <div class="pull-right hidden-xs">
-            <b>Version</b> 1.0.8
-        </div>
-        <strong>Copyright &copy; 2014-2017 <a
-                href="http://www.itcast.cn">研究院研发部</a>.
-        </strong> All rights reserved.
-    </footer>
-    <!-- 底部导航 /-->
+    </section>
+    <!-- 正文区域 /-->
+
+</div>
+<!-- 内容区域 /-->
+
+<!-- 底部导航 -->
+<footer class="main-footer">
+    <div class="pull-right hidden-xs">
+        <b>Version</b> 1.0.8
+    </div>
+    <strong>Copyright &copy; 2014-2017 <a
+            href="http://www.itcast.cn">研究院研发部</a>.
+    </strong> All rights reserved.
+</footer>
+<!-- 底部导航 /-->
 
 </div>
 
