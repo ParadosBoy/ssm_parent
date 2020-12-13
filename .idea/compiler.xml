@@ -2,7 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
-      <profile name="Maven default annotation processors profile">
+      <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -10,6 +10,7 @@
         <module name="ssm_domain" />
         <module name="ssm_service" />
         <module name="ssm_web" />
+        <module name="spring_security_helloworld" />
         <module name="ssm_dao" />
       </profile>
     </annotationProcessing>
