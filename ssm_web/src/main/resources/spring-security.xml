@@ -7,16 +7,19 @@
        http://www.springframework.org/schema/security
        https://www.springframework.org/schema/security/spring-security.xsd">
     <security:http pattern="/login.jsp" security="none"/>
-    <security:http pattern="/error.jsp" security="none"/>
+    <security:http pattern="/failer.jsp" security="none"/>
     <security:http pattern="/favicon.ico" security="none"/>
 
+    <security:http pattern="/css/**" security="none"/>
+    <security:http pattern="/img/**" security="none"/>
+    <security:http pattern="/plugins/**" security="none"/>
 
     <security:http auto-config="true" use-expressions="false">
         <security:intercept-url pattern="/**" access="ROLE_USER"/>
         <security:form-login login-page="/login.jsp"
                              login-processing-url="/login"
-                             authentication-failure-url="/error.jsp"
-                             default-target-url="/success.jsp"/>
+                             authentication-failure-url="/login.jsp"
+                             default-target-url="/index.jsp"/>
         <security:csrf disabled="true"/>
     </security:http>
 
