@@ -2,8 +2,10 @@ package com.controller;
 
 import com.domain.PageBean;
 import com.domain.Product;
+import com.github.pagehelper.PageInfo;
 import com.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,12 +22,24 @@ public class ProductController {
     @Autowired
     ProductService productService;
 
+
     @RequestMapping("/findAll")
     public ModelAndView findAll(
             @RequestParam(value = "currPage", required = false, defaultValue = "1") Integer currPage,
             @RequestParam(value = "pageSize", required = false, defaultValue = "5") Integer pageSize) {
         ModelAndView modelAndView = new ModelAndView();
-        PageBean<Product> pageBean = productService.findByPage(currPage,pageSize);
+        PageInfo<Product> pageInfo = productService.findByPageHeper(currPage, pageSize);
+        modelAndView.setViewName("product-list");
+        modelAndView.addObject("pageInfo", pageInfo);
+        return modelAndView;
+    }
+
+    @RequestMapping("/findAll3")
+    public ModelAndView findAll3(
+            @RequestParam(value = "currPage", required = false, defaultValue = "1") Integer currPage,
+            @RequestParam(value = "pageSize", required = false, defaultValue = "5") Integer pageSize) {
+        ModelAndView modelAndView = new ModelAndView();
+        PageBean<Product> pageBean = productService.findByPage(currPage, pageSize);
         modelAndView.setViewName("product-list");
         modelAndView.addObject("pageBean", pageBean);
         return modelAndView;

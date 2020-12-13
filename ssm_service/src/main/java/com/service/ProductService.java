@@ -2,6 +2,7 @@ package com.service;
 
 import com.domain.PageBean;
 import com.domain.Product;
+import com.github.pagehelper.PageInfo;
 
 import java.util.List;
 
@@ -30,4 +31,6 @@ public interface ProductService {
     PageBean<Product> findByPage(Integer currPage, Integer pageSize);
 
     public void testPageHelper(Integer currPage, Integer pageSize);
+
+    PageInfo<Product> findByPageHeper(Integer currPage, Integer pageSize);
 }

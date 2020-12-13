@@ -15,6 +15,6 @@ public class TestPageHelper {
 
     @Test
     public void test(){
-        productService.testPageHelper(1,5);
+        productService.testPageHelper(3,3);
     }
 }
