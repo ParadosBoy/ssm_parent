@@ -28,4 +28,6 @@ public interface ProductService {
 
 
     PageBean<Product> findByPage(Integer currPage, Integer pageSize);
+
+    public void testPageHelper(Integer currPage, Integer pageSize);
 }

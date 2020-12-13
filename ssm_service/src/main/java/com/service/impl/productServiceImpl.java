@@ -3,6 +3,7 @@ package com.service.impl;
 import com.domain.PageBean;
 import com.dao.ProductDao;
 import com.domain.Product;
+import com.github.pagehelper.PageHelper;
 import com.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -63,6 +64,13 @@ public class productServiceImpl implements ProductService {
         List<Product> productList = productDao.findByPage(startIndex, pageSize);
         pageBean.setList(productList);
         return pageBean;
+    }
+
+    @Override
+    public void testPageHelper(Integer currPage, Integer pageSize) {
+        PageHelper.startPage(currPage, pageSize);
+        List<Product> productList = productDao.findAll();
+        System.out.println(productList.size());
     }
 
 }
