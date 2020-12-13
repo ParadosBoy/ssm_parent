@@ -241,26 +241,30 @@
                 <div class="box-footer">
                     <div class="pull-left">
                         <div class="form-group form-inline">
-                            总共${pageBean.totalPage} 页，共${pageBean.totalCount} 条数据。 每页 <select class="form-control">
-                            <option>2</option>
-                            <option selected="selected">5</option>
-                            <option>10</option>
-                            <option>20</option>
+                            总共${pageBean.totalPage} 页，共${pageBean.totalCount} 条数据。 每页 <select onchange="gotoPage(1)" id="pageSize" class="form-control">
+                            <option value="2">2</option>
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
                         </select> 条
                         </div>
                     </div>
 
                     <div class="box-tools pull-right">
                         <ul class="pagination">
-                            <li><a href="#" aria-label="Previous">首页</a></li>
-                            <li><a href="#">上一页</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">4</a></li>
-                            <li><a href="#">5</a></li>
-                            <li><a href="#">下一页</a></li>
-                            <li><a href="#" aria-label="Next">尾页</a></li>
+                            <li><a href="javascript:gotoPage(1)" aria-label="Previous">首页</a></li>
+                            <li><a href="javascript:gotoPage(${pageBean.currPage-1})">上一页</a>
+                            </li>
+                            <c:forEach var="i" begin="1" end="${pageBean.totalPage}">
+                                <c:if test="${pageBean.currPage ==1}">
+                                    <li><a href="javascript:gotoPage(${i})"><b>${i}</b></a></li>
+                                </c:if>
+                                <c:if test="${pageBean.currPage !=1}">
+                                    <li><a href="javascript:gotoPage(${i})">${i}</a></li>
+                                </c:if>
+                            </c:forEach>
+                            <li><a href="javascript:gotoPage(${pageBean.currPage+1})">下一页</a></li>
+                            <li><a href="javascript:gotoPage(${pageBean.totalPage})" aria-label="Next">尾页</a></li>
                         </ul>
                     </div>
 
@@ -291,11 +295,26 @@
 <script
         src="${pageContext.request.contextPath}/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <script type="text/javascript">
+
+    $("#pageSize option[value=${pageBean.pageSize}]").prop("selected","selected");
+
+    function gotoPage(page) {
+        if (page < 1) {
+            return;
+        }
+        if (page >${pageBean.totalPage}) {
+            return;
+        }
+        var pageSize= $("#pageSize").val();
+        window.location.href = "${pageContext.request.contextPath}/product/findAll?currPage=" + page+"&pageSize="+pageSize;
+    }
+
     function delOne(id) {
         if (confirm('确认删除吗?')) {
             location.href = "${pageContext.request.contextPath}/product/delOne?id=" + id;
         }
     }
+
     function delMany() {
         if (confirm('确认删除吗?')) {
             $("#delForm").submit();

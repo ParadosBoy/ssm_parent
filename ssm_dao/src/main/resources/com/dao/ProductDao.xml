@@ -45,7 +45,7 @@
 
     <select id="findByPage" resultType="product">
         select *
-        from product limite #{param1},#{param2}
+        from product limit #{param1},#{param2}
     </select>
 
 </mapper>

@@ -21,6 +21,5 @@ public interface ProductDao {
 
     Integer findTotalCount();
 
-
     List<Product> findByPage(Integer startIndex, Integer pageSize);
 }
