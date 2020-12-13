@@ -1,7 +1,10 @@
-package com.controller;
+package com.domain;
 
 import java.util.List;
 
+/**
+ * @author 10574
+ */
 public class PageBean<T> {
     private Integer currPage;
     private Integer pageSize;

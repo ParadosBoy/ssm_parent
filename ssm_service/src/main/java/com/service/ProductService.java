@@ -1,6 +1,6 @@
 package com.service;
 
-import com.controller.PageBean;
+import com.domain.PageBean;
 import com.domain.Product;
 
 import java.util.List;

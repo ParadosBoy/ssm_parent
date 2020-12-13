@@ -1,6 +1,6 @@
 package com.service.impl;
 
-import com.controller.PageBean;
+import com.domain.PageBean;
 import com.dao.ProductDao;
 import com.domain.Product;
 import com.service.ProductService;

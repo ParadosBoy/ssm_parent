@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.domain.PageBean;
 import com.domain.Product;
 import com.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
