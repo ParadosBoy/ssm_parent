@@ -8,4 +8,9 @@
         from ssm_user
         where username = #{username}
     </select>
+
+    <select id="findAll" resultType="sysUser">
+        select *
+        from ssm_user
+    </select>
 </mapper>

@@ -3,17 +3,17 @@ package com.domain;
 public class Sysuser {
     private Integer id;
     private String username;
-    private String  emall;
+    private String  email;
     private String  password;
     private String  phoneNum;
     private int status;
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Sysuser{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
-                ", emall='" + emall + '\'' +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", phoneNum='" + phoneNum + '\'' +
                 ", status=" + status +
@@ -36,12 +36,12 @@ public class Sysuser {
         this.username = username;
     }
 
-    public String getEmall() {
-        return emall;
+    public String getEmail() {
+        return email;
     }
 
-    public void setEmall(String emall) {
-        this.emall = emall;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {

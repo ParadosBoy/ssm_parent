@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * @author 10574
@@ -33,5 +34,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
             return new User(user.getUsername(), "{noop}" + user.getPassword(),list);
         }
         return null;
+    }
+
+    @Override
+    public List<Sysuser> findAll() {
+        return userDao.findAll();
     }
 }
