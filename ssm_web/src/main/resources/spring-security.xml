@@ -22,14 +22,17 @@
                              default-target-url="/index.jsp"/>
         <security:csrf disabled="true"/>
 
-        <security:logout invalidate-session="true" logout-success-url="login.jsp" logout-url="/logout"/>
+        <security:logout invalidate-session="true" logout-success-url="/login.jsp" logout-url="/logout"/>
     </security:http>
 
     <security:authentication-manager>
         <security:authentication-provider user-service-ref="userService">
+            <security:password-encoder ref="passwordEncoder"/>
             <!--<security:user-service>
                 <security:user name="admin" password="{noop}admin" authorities="ROLE_USER"/>
             </security:user-service>-->
         </security:authentication-provider>
     </security:authentication-manager>
+
+    <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
 </beans>
