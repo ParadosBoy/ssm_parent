@@ -8,4 +8,6 @@ public interface UserService {
     List<Sysuser> findAll();
 
     void save(Sysuser user);
+
+    Sysuser findByUsernameCheck(String username);
 }

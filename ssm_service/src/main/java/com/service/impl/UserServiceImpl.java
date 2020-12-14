@@ -56,4 +56,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         user.setPassword(encode);
         userDao.save(user);
     }
+
+    @Override
+    public Sysuser findByUsernameCheck(String username) {
+        return userDao.findByUsernameCheck(username);
+    }
 }

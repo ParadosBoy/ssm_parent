@@ -7,6 +7,7 @@
         select *
         from ssm_user
         where username = #{username}
+          and status = 1
     </select>
 
     <select id="findAll" resultType="sysUser">
@@ -18,4 +19,10 @@
         insert into ssm_user
         values (null, #{username}, #{email}, #{password}, #{phoneNum}, #{status})
     </insert>
+
+    <select id="findByUsernameCheck" resultType="Sysuser" parameterType="string">
+        select *
+        from ssm_user
+        where username = #{username}
+    </select>
 </mapper>
