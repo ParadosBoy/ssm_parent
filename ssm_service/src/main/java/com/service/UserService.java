@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface UserService {
     List<Sysuser> findAll();
+
+    void save(Sysuser user);
 }

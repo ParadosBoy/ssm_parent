@@ -15,6 +15,7 @@ import java.util.List;
 public class UserController {
     @Autowired
     UserService userService;
+
     @RequestMapping("/findAll")
     public ModelAndView findAll() {
         ModelAndView modelAndView = new ModelAndView();
@@ -22,5 +23,11 @@ public class UserController {
         modelAndView.setViewName("user-list");
         modelAndView.addObject("userList", userList);
         return modelAndView;
+    }
+
+    @RequestMapping("/save")
+    public String save(Sysuser user) {
+        userService.save(user);
+        return "redirect:/user/findAll";
     }
 }

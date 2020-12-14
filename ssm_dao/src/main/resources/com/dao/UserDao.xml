@@ -13,4 +13,9 @@
         select *
         from ssm_user
     </select>
+
+    <insert id="save" parameterType="sysUser">
+        insert into ssm_user
+        values (null, #{username}, #{email}, #{password}, #{phoneNum}, #{status})
+    </insert>
 </mapper>

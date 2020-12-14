@@ -12,4 +12,6 @@ public interface UserDao {
     Sysuser findByUsername(String username);
 
     List<Sysuser> findAll();
+
+    void save(Sysuser user);
 }

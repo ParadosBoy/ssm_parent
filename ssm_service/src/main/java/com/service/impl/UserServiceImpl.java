@@ -40,4 +40,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     public List<Sysuser> findAll() {
         return userDao.findAll();
     }
+
+    @Override
+    public void save(Sysuser user) {
+        userDao.save(user);
+    }
 }
