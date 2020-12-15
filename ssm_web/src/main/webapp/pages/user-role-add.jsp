@@ -1,5 +1,7 @@
 <%@ page language="java" isELIgnored="false" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -112,7 +114,7 @@
 							<tbody>
 								<c:forEach items="${roleList}" var="role">
 									<tr>
-										<td><input name="ids" type="checkbox" value="${role.id}"></td>
+										<td><input name="ids" ${fn:contains(str, ",".concat(role.id).concat(","))?"checked":""}type="checkbox" value="${role.id}"></td>
 										<td>${role.id}</td>
 										<td>${role.roleName }</td>
 										<td>${role.roleDesc}</td>

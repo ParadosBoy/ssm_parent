@@ -18,7 +18,7 @@
         <id property="id" column="id"/>
         <result property="roleName" column="roleName"/>
         <result property="roleDesc" column="roleDesc"/>
-        <collection property="permissionList" ofType="permission" column="id"
+        <collection property="permissionList" ofType="permission" column="id" fetchType="lazy"
                     select="com.dao.PermissionDao.findPermissionsByRoleId"/>
     </resultMap>
 

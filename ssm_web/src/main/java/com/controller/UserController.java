@@ -1,6 +1,8 @@
 package com.controller;
 
+import com.domain.Role;
 import com.domain.Sysuser;
+import com.service.RoleService;
 import com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,6 +50,27 @@ public class UserController {
         Sysuser user = userService.findById(id);
         modelAndView.setViewName("user-show");
         modelAndView.addObject("user", user);
+        return modelAndView;
+    }
+
+
+    @Autowired
+    RoleService roleService;
+
+    @RequestMapping("/addRolesToUserUI")
+    public ModelAndView addRolesToUserUI(Integer userId) {
+        ModelAndView modelAndView = new ModelAndView();
+        List<Role> roleList = roleService.findAll();
+        Sysuser user = userService.findById(userId);
+        StringBuilder sb = new StringBuilder();
+        for (Role role : user.getRoleList()) {
+            sb.append(",");
+            sb.append(role.getId());
+            sb.append(",");
+        }
+        modelAndView.addObject("roleList", roleList);
+        modelAndView.addObject("str", sb.toString());
+        modelAndView.setViewName("user-role-add");
         return modelAndView;
     }
 }

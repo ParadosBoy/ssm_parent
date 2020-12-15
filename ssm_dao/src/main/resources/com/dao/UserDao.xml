@@ -27,7 +27,8 @@
         <result property="phoneNum" column="phoneNum"/>
         <result property="password" column="password"/>
         <result property="status" column="status"/>
-        <collection property="roleList" ofType="role" column="id" select="com.dao.RoleDao.findRoleByUserId"/>
+        <collection property="roleList" ofType="role" column="id"
+                    select="com.dao.RoleDao.findRoleByUserId"/>
     </resultMap>
 
     <select id="findById" resultType="sysUser" resultMap="userMap">
