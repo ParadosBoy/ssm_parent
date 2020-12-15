@@ -15,5 +15,5 @@ public interface UserDao {
 
     void save(Sysuser user);
 
-    Sysuser findByUsernameCheck(String username);
+    Sysuser findByUsernameCheck();
 }

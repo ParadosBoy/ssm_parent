@@ -40,6 +40,5 @@ public class UserController {
         } else {
             return "1";
         }
-
     }
 }

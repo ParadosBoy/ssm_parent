@@ -59,6 +59,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     @Override
     public Sysuser findByUsernameCheck(String username) {
-        return userDao.findByUsernameCheck(username);
+        return userDao.findByUsernameCheck();
     }
 }

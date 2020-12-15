@@ -102,7 +102,7 @@
 
                         <div class="col-md-2 title">用户名称</div>
                         <div class="col-md-4 data">
-                            <input type="text" onchange="checkUsername()" id="username" class="form-control"
+                            <input type="text" id="username" onchange="checkUsername()"  class="form-control"
                                    name="username"
                                    placeholder="用户名称" value="">
                         </div>
@@ -134,7 +134,7 @@
                 </div>
                 <!--订单信息/--> <!--工具栏-->
                 <div class="box-tools text-center">
-                    <button type="submit" class="btn bg-maroon">保存</button>
+                    <button type="submit" id="saveBtn" class="btn bg-maroon">保存</button>
                     <button type="button" class="btn bg-default"
                             onclick="history.back(-1);">返回
                     </button>
@@ -163,13 +163,19 @@
         src="${pageContext.request.contextPath}/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <script type="text/javascript">
     function checkUsername() {
-        var username = $("#username").val();
+         var username = $("#username").val();
         $.ajax({
-            url: "${pageContext.request.contextPath}/user/checkUsername",
-            type: 'post',
-            data: {"username": username},
+            url:"${pageContext.request.contextPath}/user/checkUsername",
+            type:"post",
+            data:{"username": username},
             success: function (data) {
-                alert(data);
+                if (data==1){
+                    $("#username").attr("style","border:red 1px solid");
+                    $("#saveBtn").prop("disable",true);
+                }else {
+                    $("#username").attr("style","");
+                    $("#saveBtn").prop("disable",false);
+                }
             }
         });
     }
