@@ -30,7 +30,7 @@
         <collection property="roleList" ofType="role" column="id" select="com.dao.RoleDao.findRoleByUserId"/>
     </resultMap>
 
-    <select id="findById" resultType="sysUser" parameterType="int">
+    <select id="findById" resultType="sysUser" resultMap="userMap">
         select *
         from ssm_user
         where id = #{id}

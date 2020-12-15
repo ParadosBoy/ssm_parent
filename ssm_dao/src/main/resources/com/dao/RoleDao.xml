@@ -14,16 +14,16 @@
     </insert>
 
 
-    <resultMap id="roleMap" type="sysUser">
+    <resultMap id="roleMap" type="role">
         <id property="id" column="id"/>
-        <result property="roleName" column="username"/>
-        <result property="roleDesc" column="email"/>
-        <collection property="permissionList" ofType="permission" column="id" select="com.dao.PermissionDao.findPermissionsByRoleId"/>
+        <result property="roleName" column="roleName"/>
+        <result property="roleDesc" column="roleDesc"/>
+        <collection property="permissionList" ofType="permission" column="id"
+                    select="com.dao.PermissionDao.findPermissionsByRoleId"/>
     </resultMap>
 
 
-
-    <select id="findRoleByUserId" resultType="role" parameterType="int">
+    <select id="findRoleByUserId" parameterType="int" resultMap="roleMap">
         select r.*
         from user_role ur,
              ssm_role r

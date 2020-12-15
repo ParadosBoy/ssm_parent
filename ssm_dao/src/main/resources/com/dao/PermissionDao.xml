@@ -24,6 +24,6 @@
         from role_permission rp,
              permission p
         where rp.permissionId = p.id
-          and roleId = #{roleIdId}
+          and roleId = #{roleId}
     </select>
 </mapper>
