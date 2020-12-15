@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.UserDao">
-    <select id="findByUsername" resultType="Sysuser" parameterType="string">
+    <select id="findByUsername" resultType="sysUser" parameterType="string">
         select *
         from ssm_user
         where username = #{username}
@@ -20,7 +20,23 @@
         values (null, #{username}, #{email}, #{password}, #{phoneNum}, #{status})
     </insert>
 
-    <select id="findByUsernameCheck" resultType="Sysuser" parameterType="string">
+    <resultMap id="userMap" type="sysUser">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="email" column="email"/>
+        <result property="phoneNum" column="phoneNum"/>
+        <result property="password" column="password"/>
+        <result property="status" column="status"/>
+        <collection property="roleList" ofType="role" column="id" select="com.dao.RoleDao.findRoleByUserId"/>
+    </resultMap>
+
+    <select id="findById" resultType="sysUser" parameterType="int">
+        select *
+        from ssm_user
+        where id = #{id}
+    </select>
+
+    <select id="findByUsernameCheck" resultType="sysUser" parameterType="string">
         select *
         from ssm_user
         where username = #{username}

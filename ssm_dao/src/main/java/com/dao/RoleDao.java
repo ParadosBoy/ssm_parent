@@ -13,4 +13,6 @@ public interface RoleDao {
 
 
     void save(Role role);
+
+    List<Role> findRoleByUserId(Integer userId);
 }

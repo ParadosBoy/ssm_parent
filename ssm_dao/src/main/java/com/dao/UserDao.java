@@ -16,4 +16,6 @@ public interface UserDao {
     void save(Sysuser user);
 
     Sysuser findByUsernameCheck();
+
+    Sysuser findById(Integer id);
 }

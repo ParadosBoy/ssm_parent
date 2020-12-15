@@ -18,4 +18,12 @@
         insert into permission
         values (null, #{permissionName}, #{url}, #{pid})
     </insert>
+
+    <select id="findPermissionsByRoleId" resultType="permission" parameterType="int">
+        select p.*
+        from role_permission rp,
+             permission p
+        where rp.permissionId = p.id
+          and roleId = #{roleIdId}
+    </select>
 </mapper>

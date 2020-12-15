@@ -154,7 +154,7 @@
 											<td>${user.phoneNum }</td>
 											<td>${user.status==1?"开启":"关闭"}</td>
 											<td class="text-center">
-												<a href="${pageContext.request.contextPath}/pages/user-show.jsp" class="btn bg-olive btn-xs">详情</a>
+												<a href="${pageContext.request.contextPath}/user/details?id=${user.id}" class="btn bg-olive btn-xs">详情</a>
 												<a href="${pageContext.request.contextPath}/pages/user-role-add.jsp" class="btn bg-olive btn-xs">添加角色</a>
 											</td>
 										</tr>

@@ -12,6 +12,7 @@ public interface UserService {
 
     void save(Sysuser user);
 
-
     Sysuser findByUsernameCheck(String username);
+
+    Sysuser findById(Integer id);
 }

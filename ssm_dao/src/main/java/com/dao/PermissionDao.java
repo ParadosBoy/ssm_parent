@@ -14,4 +14,6 @@ public interface PermissionDao {
     void save(Permission permission);
 
     List<Permission> findParentPermission();
+
+    List<Permission> findPermissionsByRoleId(Integer roleId);
 }

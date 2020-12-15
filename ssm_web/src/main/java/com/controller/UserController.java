@@ -41,4 +41,13 @@ public class UserController {
             return "1";
         }
     }
+
+    @RequestMapping("/details")
+    public ModelAndView details(Integer id) {
+        ModelAndView modelAndView = new ModelAndView();
+        Sysuser user = userService.findById(id);
+        modelAndView.setViewName("user-show");
+        modelAndView.addObject("user", user);
+        return modelAndView;
+    }
 }

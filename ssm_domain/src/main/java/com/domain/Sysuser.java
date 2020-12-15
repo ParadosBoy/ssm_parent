@@ -1,5 +1,7 @@
 package com.domain;
 
+import java.util.List;
+
 public class Sysuser {
     private Integer id;
     private String username;
@@ -7,6 +9,16 @@ public class Sysuser {
     private String  password;
     private String  phoneNum;
     private int status;
+
+    private List<Role> roleList;
+
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
+    }
 
     @Override
     public String toString() {

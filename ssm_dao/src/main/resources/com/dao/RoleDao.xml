@@ -12,4 +12,22 @@
         insert into ssm_role
         values (null, #{roleName}, #{roleDesc})
     </insert>
+
+
+    <resultMap id="roleMap" type="sysUser">
+        <id property="id" column="id"/>
+        <result property="roleName" column="username"/>
+        <result property="roleDesc" column="email"/>
+        <collection property="permissionList" ofType="permission" column="id" select="com.dao.PermissionDao.findPermissionsByRoleId"/>
+    </resultMap>
+
+
+
+    <select id="findRoleByUserId" resultType="role" parameterType="int">
+        select r.*
+        from user_role ur,
+             ssm_role r
+        where ur.roleId = r.id
+          and ur.userId = #{userId}
+    </select>
 </mapper>

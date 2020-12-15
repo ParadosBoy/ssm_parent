@@ -22,7 +22,7 @@ import java.util.List;
  * @author 10574
  */
 @Service("userService")
-public class UserServiceImpl implements UserService, UserDetailsService {
+public class UserServiceImpl implements UserDetailsService , UserService {
     @Autowired
     UserDao userDao;
 
@@ -60,5 +60,10 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     @Override
     public Sysuser findByUsernameCheck(String username) {
         return userDao.findByUsernameCheck();
+    }
+
+    @Override
+    public Sysuser findById(Integer id) {
+        return userDao.findById(id);
     }
 }
