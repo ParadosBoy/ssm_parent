@@ -21,7 +21,12 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     @Override
-    public void save(Role role) {
-        permissionDao.save(role);
+    public void save(Permission permission) {
+        permissionDao.save(permission);
+    }
+
+    @Override
+    public List<Permission> findParentPermission() {
+        return permissionDao.findParentPermission();
     }
 }

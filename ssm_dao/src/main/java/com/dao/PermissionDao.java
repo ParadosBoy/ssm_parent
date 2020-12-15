@@ -11,5 +11,7 @@ import java.util.List;
 public interface PermissionDao {
     List<Permission> findAll();
 
-    void save(Role role);
+    void save(Permission permission);
+
+    List<Permission> findParentPermission();
 }

@@ -8,6 +8,12 @@
         from permission
     </select>
 
+    <select id="findParentPermission" resultType="permission">
+        select *
+        from permission
+        where pid = 0
+    </select>
+
     <insert id="save" parameterType="permission">
         insert into permission
         values (null, #{permissionName}, #{url}, #{pid})

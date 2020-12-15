@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.domain.Permission;
+import com.domain.Product;
 import com.domain.Role;
 import com.service.PermissionService;
 import com.service.RoleService;
@@ -30,8 +31,17 @@ public class PermissionController {
     }
 
     @RequestMapping("/save")
-    public String save(Role role) {
-        permissionService.save(role);
+    public String save(Permission permission) {
+        permissionService.save(permission);
         return "redirect:/permission/findAll";
+    }
+
+    @RequestMapping("/saveUI")
+    public ModelAndView saveUI() {
+        ModelAndView modelAndView = new ModelAndView();
+        List<Permission> permissionList = permissionService.findParentPermission();
+        modelAndView.addObject("permissionList", permissionList);
+        modelAndView.setViewName("permission-add");
+        return modelAndView;
     }
 }
