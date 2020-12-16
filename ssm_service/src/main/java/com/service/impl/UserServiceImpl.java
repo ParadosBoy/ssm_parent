@@ -1,6 +1,7 @@
 package com.service.impl;
 
 import com.dao.UserDao;
+import com.domain.Role;
 import com.domain.Sysuser;
 import com.service.UserService;
 import com.utils.MD5Utils;
@@ -22,7 +23,7 @@ import java.util.List;
  * @author 10574
  */
 @Service("userService")
-public class UserServiceImpl implements UserDetailsService , UserService {
+public class UserServiceImpl implements UserDetailsService, UserService {
     @Autowired
     UserDao userDao;
 
@@ -31,8 +32,12 @@ public class UserServiceImpl implements UserDetailsService , UserService {
         Sysuser user = userDao.findByUsername(username);
         if (user != null) {
             Collection<GrantedAuthority> list = new ArrayList<>();
-            SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority("ROLE_USER");
-            list.add(simpleGrantedAuthority);
+            //SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority("ROLE_USER");
+            for (Role role : user.getRoleList()) {
+                SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority("ROLE_" + role.getRoleName());
+                list.add(simpleGrantedAuthority);
+            }
+
             return new User(user.getUsername(), user.getPassword(), list);
         }
         return null;
@@ -70,9 +75,9 @@ public class UserServiceImpl implements UserDetailsService , UserService {
     @Override
     public void savaRoleToUser(Integer userId, Integer[] ids) {
         userDao.delRoleFromUser(userId);
-        if (ids!=null){
+        if (ids != null) {
             for (Integer roleId : ids) {
-                userDao.savaRoleToUser(roleId,userId);
+                userDao.savaRoleToUser(roleId, userId);
             }
         }
     }
