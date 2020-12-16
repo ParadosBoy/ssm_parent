@@ -171,10 +171,10 @@
             success: function (data) {
                 if (data==1){
                     $("#username").attr("style","border:red 1px solid");
-                    $("#saveBtn").prop("disable",true);
+                    $("#saveBtn").prop("disabled",true)
                 }else {
                     $("#username").attr("style","");
-                    $("#saveBtn").prop("disable",false);
+                    $("#saveBtn").prop("disabled",false);
                 }
             }
         });

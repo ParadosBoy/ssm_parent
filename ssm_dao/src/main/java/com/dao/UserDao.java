@@ -15,7 +15,11 @@ public interface UserDao {
 
     void save(Sysuser user);
 
-    Sysuser findByUsernameCheck();
+    Sysuser findByUsernameCheck(String username);
 
     Sysuser findById(Integer id);
+
+    void delRoleFromUser(Integer userId);
+
+    void savaRoleToUser(Integer roleId, Integer userId);
 }

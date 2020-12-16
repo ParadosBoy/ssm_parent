@@ -31,7 +31,13 @@
                     select="com.dao.RoleDao.findRoleByUserId"/>
     </resultMap>
 
-    <select id="findById" resultType="sysUser" resultMap="userMap">
+    <select id="findById" parameterType="int" resultMap="userMap">
+        select *
+        from ssm_user
+        where id = #{id}
+    </select>
+
+    <select id="findByUserId" parameterType="int" resultMap="userMap">
         select *
         from ssm_user
         where id = #{id}
@@ -42,4 +48,16 @@
         from ssm_user
         where username = #{username}
     </select>
+
+    <delete id="delRoleFromUser" parameterType="int">
+        delete
+        from user_role
+        where userId =
+              #{userId}
+    </delete>
+
+    <insert id="savaRoleToUser">
+        insert into user_role
+        values (#{param2}, #{param1})
+    </insert>
 </mapper>

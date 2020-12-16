@@ -12,6 +12,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
+/**
+ * @author 10574
+ */
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -60,8 +63,9 @@ public class UserController {
     @RequestMapping("/addRolesToUserUI")
     public ModelAndView addRolesToUserUI(Integer userId) {
         ModelAndView modelAndView = new ModelAndView();
-        List<Role> roleList = roleService.findAll();
         Sysuser user = userService.findById(userId);
+        System.out.println(user);
+        List<Role> roleList = roleService.findAll();
         StringBuilder sb = new StringBuilder();
         for (Role role : user.getRoleList()) {
             sb.append(",");
@@ -70,7 +74,14 @@ public class UserController {
         }
         modelAndView.addObject("roleList", roleList);
         modelAndView.addObject("str", sb.toString());
+        modelAndView.addObject("userId", user.getId());
         modelAndView.setViewName("user-role-add");
         return modelAndView;
+    }
+
+    @RequestMapping("/addRolesToUser")
+    public String addRolesToUser(Integer userId, Integer[] ids) {
+        userService.savaRoleToUser(userId,ids);
+        return "redirect:/user/findAll";
     }
 }

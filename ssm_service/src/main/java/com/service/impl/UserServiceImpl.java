@@ -59,11 +59,21 @@ public class UserServiceImpl implements UserDetailsService , UserService {
 
     @Override
     public Sysuser findByUsernameCheck(String username) {
-        return userDao.findByUsernameCheck();
+        return userDao.findByUsernameCheck(username);
     }
 
     @Override
     public Sysuser findById(Integer id) {
         return userDao.findById(id);
+    }
+
+    @Override
+    public void savaRoleToUser(Integer userId, Integer[] ids) {
+        userDao.delRoleFromUser(userId);
+        if (ids!=null){
+            for (Integer roleId : ids) {
+                userDao.savaRoleToUser(roleId,userId);
+            }
+        }
     }
 }

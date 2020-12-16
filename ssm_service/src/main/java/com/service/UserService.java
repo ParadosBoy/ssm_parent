@@ -15,4 +15,6 @@ public interface UserService {
     Sysuser findByUsernameCheck(String username);
 
     Sysuser findById(Integer id);
+
+    void savaRoleToUser(Integer userId, Integer[] ids);
 }

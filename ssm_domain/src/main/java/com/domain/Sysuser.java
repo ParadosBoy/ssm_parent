@@ -1,9 +1,11 @@
 package com.domain;
 
-import org.springframework.security.core.parameters.P;
 
 import java.util.List;
 
+/**
+ * @author 10574
+ */
 public class Sysuser {
     private Integer id;
     private String username;
