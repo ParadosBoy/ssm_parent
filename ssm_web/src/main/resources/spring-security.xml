@@ -23,6 +23,7 @@
         <security:csrf disabled="true"/>
 
         <security:logout invalidate-session="true" logout-success-url="/login.jsp" logout-url="/logout"/>
+        <security:access-denied-handler error-page="/403.jsp"/>
     </security:http>
 
     <security:authentication-manager>
@@ -35,4 +36,5 @@
     </security:authentication-manager>
 
     <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    <security:global-method-security secured-annotations="enabled"/>
 </beans>

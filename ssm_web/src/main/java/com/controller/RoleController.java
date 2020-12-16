@@ -6,6 +6,7 @@ import com.domain.Sysuser;
 import com.service.PermissionService;
 import com.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/role")
+@Secured("ROLE_SUPERADMIN")
 public class RoleController {
     @Autowired
     RoleService roleService;
