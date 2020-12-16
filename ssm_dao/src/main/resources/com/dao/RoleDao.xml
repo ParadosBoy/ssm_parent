@@ -30,4 +30,22 @@
         where ur.roleId = r.id
           and ur.userId = #{userId}
     </select>
+
+    <select id="findById" parameterType="int" resultMap="roleMap">
+        select *
+        from ssm_role
+        where id = #{roleId}
+    </select>
+
+    <delete id="delPermissionsFromRole" parameterType="int">
+        delete
+        from role_permission
+        where roleId =
+              #{roleId}
+    </delete>
+
+    <insert id="savePermissionsToRole">
+        insert into role_permission
+        values (#{param2}, #{param1})
+    </insert>
 </mapper>

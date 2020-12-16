@@ -15,4 +15,10 @@ public interface RoleDao {
     void save(Role role);
 
     List<Role> findRoleByUserId(Integer userId);
+
+    Role findById(Integer roleId);
+
+    void delPermissionsFromRole(Integer roleId);
+
+    void savePermissionsToRole(Integer roleId, Integer permissionId);
 }
