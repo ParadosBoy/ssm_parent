@@ -27,6 +27,12 @@
 
     </properties>
     <dependencies>
+
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>1.9.6</version>
+        </dependency>
         <!-- spring相关的jar包 -->
         <!-- 容器 -->
         <dependency>
