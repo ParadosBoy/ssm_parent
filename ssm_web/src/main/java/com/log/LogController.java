@@ -1,6 +1,7 @@
 package com.log;
 
 import com.domain.Log;
+import com.domain.Role;
 import com.service.LogService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -12,16 +13,22 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author 10574
  */
 @Aspect
 @Component
+@Controller
+@RequestMapping("/pages")
 public class LogController {
 
     @Autowired
@@ -62,5 +69,14 @@ public class LogController {
         String methodname = joinPoint.getSignature().getName();
         log.setMethod(classname + "." + methodname);
         logService.save(log);
+    }
+
+    @RequestMapping("/findAll")
+    public ModelAndView findAll() {
+        ModelAndView modelAndView = new ModelAndView();
+        List<Log> logList = logService.findAll();
+        modelAndView.setViewName("syslog-list");
+        modelAndView.addObject("logList", logList);
+        return modelAndView;
     }
 }

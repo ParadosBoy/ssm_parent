@@ -6,4 +6,8 @@
     <insert id="save" parameterType="log">
         insert into log values (null ,#{visitTime},#{username},#{ip},#{method})
     </insert>
+
+    <select id="findAll" resultType="log">
+        select * from log
+    </select>
 </mapper>

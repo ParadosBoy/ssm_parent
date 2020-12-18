@@ -47,7 +47,7 @@
 							<i class="fa fa-circle-o"></i> 权限管理
 					</a></li>
 					<li id="system-setting"><a
-						href="${pageContext.request.contextPath}/pages/syslog-list.jsp"> <i
+						href="${pageContext.request.contextPath}/pages/findAll"> <i
 							class="fa fa-circle-o"></i> 访问日志
 					</a></li>
 				</ul></li>
